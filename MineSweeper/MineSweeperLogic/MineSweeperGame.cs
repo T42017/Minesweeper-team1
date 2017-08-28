@@ -42,8 +42,9 @@ namespace MineSweeperLogic
 
         public void DrawBoard()
         {
-            
-            
+
+            PosX = 2;
+            PosY = 2;
             
             for(int i=0; i < PosY; i++)
             {
