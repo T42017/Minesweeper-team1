@@ -58,7 +58,8 @@ namespace MineSweeperLogic
                     {
                         X = x,
                         Y = y,
-                        IsOpen = false
+                        IsOpen = false,
+                        IsFlagged = false
                     };
                 }
             }
