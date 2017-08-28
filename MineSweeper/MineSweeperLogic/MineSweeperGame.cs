@@ -12,8 +12,10 @@ namespace MineSweeperLogic
 
         public MineSweeperGame(int sizeX, int sizeY, int nrOfMines, IServiceBus bus)
         {
+            _bus = bus;
         }
 
+        private IServiceBus _bus;
         public int PosX { get; private set; }
         public int PosY { get; private set; }
         public int SizeX { get; }
@@ -40,6 +42,20 @@ namespace MineSweeperLogic
 
         public void DrawBoard()
         {
+            
+            
+            
+            for(int i=0; i < PosY; i++)
+            {
+            
+                _bus.WriteLine();
+                for(int b=0; b < PosX; b++)
+                {
+                    _bus.Write("dad");
+                  
+                }
+            }
+            
         }
 
         #region MoveCursor Methods
