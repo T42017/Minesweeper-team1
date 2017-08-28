@@ -10,9 +10,18 @@ namespace MineSweeperLogic
     public class MineSweeperGame
     {
 
+        #region Constructor
+
         public MineSweeperGame(int sizeX, int sizeY, int nrOfMines, IServiceBus bus)
         {
+            this.SizeX = sizeX;
+            this.SizeY = sizeY;
+            this.NumberOfMines = nrOfMines;
+            this.State = GameState.Playing;
+            this.ResetBoard();
         }
+
+        #endregion
 
         public int PosX { get; private set; }
         public int PosY { get; private set; }
@@ -34,9 +43,15 @@ namespace MineSweeperLogic
         {
         }
 
+        #region Reset board
+
         public void ResetBoard()
         {
         }
+
+
+
+        #endregion
 
         public void DrawBoard()
         {
