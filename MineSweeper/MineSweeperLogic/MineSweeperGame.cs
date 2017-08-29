@@ -42,9 +42,12 @@ namespace MineSweeperLogic
 
         public void DrawBoard()
         {
-
+            int[,] data = new int[PosX, PosY];
+            
             PosX = 2;
             PosY = 2;
+            String text;
+            text = "";
             
             for(int i=0; i < PosY; i++)
             {
@@ -52,8 +55,48 @@ namespace MineSweeperLogic
                 _bus.WriteLine();
                 for(int b=0; b < PosX; b++)
                 {
-                    _bus.Write("dad");
-                  
+                    
+                    switch ("?")
+                    {
+                        case ".":
+                            text = ".";
+                            break;
+                        case "!":
+                            text = "!";
+                            break;
+                        case "X":
+                            text = "X";
+                            break;
+                        case "?":
+                            text = "?";
+                            break;
+                        case "1":
+                            text = "1";
+                            break;
+                        case "2":
+                            text = "2";
+                            break;
+                        case "3":
+                            text = "3";
+                            break;
+                        case "4":
+                            text = "4";
+                            break;
+                        case "5":
+                            text = "5";
+                            break;
+                        case "6":
+                            text = "6";
+                            break;
+                        case "7":
+                            text = "7";
+                            break;
+                        case "8":
+                            text = "8";
+                            break;
+                           
+                    }
+                    _bus.Write(text);
                 }
             }
             
