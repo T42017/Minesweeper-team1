@@ -142,14 +142,14 @@ namespace MineSweeperLogic
             
             
             
-            int lenghtX = SizeX,lenghtY = SizeY;
            
            
-            for(int i=0; i < lenghtY; i++)
+           
+            for(int i=0; i < SizeY; i++)
             {
             
                 _bus.WriteLine();
-                for(int b=0; b < lenghtX; b++)
+                for(int b=0; b < SizeX; b++)
                 {
 
                     if(_grid[b, i].IsOpen==true)
