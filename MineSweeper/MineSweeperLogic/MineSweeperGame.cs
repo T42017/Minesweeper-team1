@@ -44,6 +44,27 @@ namespace MineSweeperLogic
 
         public void ClickCoordinate()
         {
+            var clickedPoint = _grid[PosX, PosY];
+            clickedPoint.IsOpen = true;
+            
+
+            /* skapa en if sats där du vinner om du 
+             öppnar alla som inte är minnor och en 
+             else sats där du förlorar om du går på en minna
+            */
+
+            /* void FloodFill (int x, int y, int fill, int old)
+            {
+                if ((x < 0)) || (x >= width)) return;
+                if ((y < 0)) || (y >= height)) return;
+                if (getPixel(x, y)== old);
+                FloodFill (x+1, y, fill, old);
+                FloodFill (x, y+1, fill, old); 
+                FloodFill (x-1, y, fill, old); 
+                FloodFill (x, y-1, fill, old);
+            }*/
+
+
         }
 
         #region Reset board
