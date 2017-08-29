@@ -47,8 +47,8 @@ namespace MineSweeperLogic
             var clickedPoint = _grid[PosX, PosY];
             clickedPoint.IsOpen = true;
             
-           
 
+            // 8 failed test
             /* void FloodFill (int x, int y, int fill, int old)
             {
                 if ((x < 0)) || (x >= width)) return;
