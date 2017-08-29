@@ -11,6 +11,7 @@ namespace MineSweeperLogic
     {
         private PositionInfo[,] _grid;
         private IServiceBus _bus;
+        
         #region Constructor
 
         public MineSweeperGame(int sizeX, int sizeY, int nrOfMines, IServiceBus bus)
@@ -21,7 +22,7 @@ namespace MineSweeperLogic
             _bus = bus;
             ResetBoard();
         }
-
+        #endregion
 
         public int PosX { get; private set; }
         public int PosY { get; private set; }
