@@ -142,9 +142,8 @@ namespace MineSweeperLogic
             
             
             
-            
-            
-            
+           
+           
            
             for(int i=0; i < SizeY; i++)
             {
@@ -153,43 +152,97 @@ namespace MineSweeperLogic
                 for(int b=0; b < SizeX; b++)
                 {
 
-                    if(_grid[i, b].IsOpen==true)
+                    if(_grid[b, i].IsOpen==true)
                     {
-                     switch(_grid[i, b].NrOfNeighbours)
+                     switch(_grid[b, i].NrOfNeighbours)
                         {
                         case 1:
-                        _bus.Write("1 ");
+                       if(PosX==b && PosY == i)
+                                {
+                                    _bus.Write("1 ", ConsoleColor.DarkCyan);
+                                }
+                                else { _bus.Write("1 "); }
+                                    
 
                         break;
 
                             case 2:
-                        _bus.Write("2 ");
+                                if(PosX==b && PosY == i)
+                                {
+                                    _bus.Write("2 ",ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("2 ");
+                                }
 
                         break;
 
                             case 3:
-                        _bus.Write("3 ");
-                        break;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("3 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("3 ");
+                                }
+                                break;
 
                             case 4:
-                        _bus.Write("4 ");
-                        break;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("4 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("4 ");
+                                }
+                                break;
 
                             case 5:
-                       _bus.Write("5 ");
-                       break ;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("5 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("5 ");
+                                }
+                                break ;
 
                             case 6:
-                      _bus.Write("6 ");
-                      break;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("6 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("6 ");
+                                }
+                                break;
 
                             case 7:
-                        _bus.Write("7 ");
-                         break;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("7 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("7 ");
+                                }
+                                break;
 
                             case 8:
-                          _bus.Write("8 ");
-                          break;
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write("8 ", ConsoleColor.DarkCyan);
+                                }
+                                else
+                                {
+                                    _bus.Write("8 ");
+                                }
+                                break;
 
              
 
@@ -198,15 +251,36 @@ namespace MineSweeperLogic
                     }
                     else if(_grid[i, b].IsFlagged == true)
                     {
-                        _bus.Write("! ");
+                        if (PosX == b && PosY == i)
+                        {
+                            _bus.Write("! ", ConsoleColor.DarkCyan);
+                        }
+                        else
+                        {
+                            _bus.Write("! ");
+                        }
                     }
                     else if (_grid[i, b].HasMine == true)
                     {
-                        _bus.Write("X ");
+                        if (PosX == b && PosY == i)
+                        {
+                            _bus.Write("X ", ConsoleColor.DarkCyan);
+                        }
+                        else
+                        {
+                            _bus.Write("X ");
+                        }
                     }
                     else
                     {
-                        _bus.Write("? ");
+                        if (PosX == b && PosY == i)
+                        {
+                            _bus.Write("? ", ConsoleColor.DarkCyan);
+                        }
+                        else
+                        {
+                            _bus.Write("? ");
+                        }
                     }
 
 
