@@ -47,14 +47,6 @@ namespace MineSweeperLogic
             var clickedPoint = _grid[PosX, PosY];
             clickedPoint.IsOpen = true;
 
-            for (int y = 0; y < _underTest.SizeY; y++)
-            {
-                for (int x = 0; x < _underTest.SizeX; x++)
-                {
-                    if (_underTest.GetCoordinate(x, y).IsOpen)
-                        openCount++;
-                }
-            }
 
             /* void FloodFill (int x, int y, int fill, int old)
             {
