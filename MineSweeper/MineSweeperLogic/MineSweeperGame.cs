@@ -47,11 +47,7 @@ namespace MineSweeperLogic
             var clickedPoint = _grid[PosX, PosY];
             clickedPoint.IsOpen = true;
             
-
-            /* skapa en if sats där du vinner om du 
-             öppnar alla som inte är minnor och en 
-             else sats där du förlorar om du går på en minna
-            */
+           
 
             /* void FloodFill (int x, int y, int fill, int old)
             {
