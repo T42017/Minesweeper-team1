@@ -35,6 +35,8 @@ namespace MineSweeperLogic
 
         public PositionInfo GetCoordinate(int x, int y)
         {
+            if (x < 0 || x >= SizeX || y < 0 || y >= SizeY)
+                throw new IndexOutOfRangeException("Coordinate with given x and y is not in board.");
             return _grid[x, y];
         }
 
@@ -59,11 +61,16 @@ namespace MineSweeperLogic
                         X = x,
                         Y = y,
                         IsOpen = false,
-                        IsFlagged = false
+                        HasMine = false,
+                        IsFlagged = false,
                     };
                 }
             }
             PlaceNumberOfMines(NumberOfMines);
+            foreach (var cell in _grid)
+            {
+                cell.NrOfNeighbours = GetNumberOfNeighbours(cell.X, cell.Y);
+            }
             State = GameState.Playing;
         }
 
@@ -78,22 +85,51 @@ namespace MineSweeperLogic
             {
                 int x = _bus.Next(SizeX);
                 int y = _bus.Next(SizeY);
-                if (!_grid[x, y].HasMine)
+                if (!GetCoordinate(x, y).HasMine)
                 {
-                    _grid[x, y].HasMine = true;
+                    GetCoordinate(x, y).HasMine = true;
                     placedMines++;
                 }
             }
             while (placedMines != nrOfMines);
         }
 
-        private int GetNumberOfNeighbours(PositionInfo cell)
+        public PositionInfo[] GetAdjacentCells(int x, int y)
         {
-            if (cell.X == 0 && cell.Y == 0)
+            var cells = new List<PositionInfo>();
+
+            for (int i = x - 1; i <= x + 1; i++)
             {
-                
+                for (int j = y - 1; j <= y + 1; j++)
+                {
+                    if (i == x && j == y ||
+                        i < 0 || i >= SizeX ||
+                        j < 0 || j >= SizeY)
+                        continue;
+                    cells.Add(GetCoordinate(i, j));
+                }
             }
-            return 0;
+            return cells.ToArray();
+        }
+
+        private int GetNumberOfNeighbours(int x, int y)
+        {
+            /*
+             X-1, Y
+             X-1, Y-1
+             X, Y-1
+             X+1, Y-1
+             X+1, Y
+             X+1, Y+1
+             X, Y+1
+             X-1, Y+1
+            */
+            if (x < 0 || x >= SizeX ||
+                y < 0 || y >= SizeY)
+                throw new IndexOutOfRangeException("X and Y must exist as indices in the grid.");
+
+            var neighbours = GetAdjacentCells(x, y);
+            return neighbours.Count(neighbour => neighbour.HasMine);
         }
 
         #endregion
