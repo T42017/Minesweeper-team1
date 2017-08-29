@@ -142,8 +142,14 @@ namespace MineSweeperLogic
             
             
             
+<<<<<<< HEAD
+            
+            
+            
+=======
            
            
+>>>>>>> origin/Feature-Draw
            
             for(int i=0; i < SizeY; i++)
             {
@@ -249,7 +255,7 @@ namespace MineSweeperLogic
 
                         }
                     }
-                    else if(_grid[b, i].IsFlagged == true)
+                    else if(_grid[i, b].IsFlagged == true)
                     {
                         if (PosX == b && PosY == i)
                         {
@@ -260,7 +266,7 @@ namespace MineSweeperLogic
                             _bus.Write("! ");
                         }
                     }
-                    else if (_grid[b, i].HasMine == true)
+                    else if (_grid[i, b].HasMine == true)
                     {
                         if (PosX == b && PosY == i)
                         {
