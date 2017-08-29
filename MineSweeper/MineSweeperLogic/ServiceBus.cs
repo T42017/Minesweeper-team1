@@ -25,6 +25,7 @@ namespace MineSweeperLogic
         public void WriteLine()
         {
             Console.WriteLine();
+
         }
 
         public int Next(int maxValue)

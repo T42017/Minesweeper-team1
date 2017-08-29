@@ -11,6 +11,7 @@ namespace MineSweeperLogic
     {
         private PositionInfo[,] _grid;
         private IServiceBus _bus;
+        
         #region Constructor
 
         public MineSweeperGame(int sizeX, int sizeY, int nrOfMines, IServiceBus bus)
@@ -21,7 +22,6 @@ namespace MineSweeperLogic
             _bus = bus;
             ResetBoard();
         }
-
         #endregion
 
         public int PosX { get; private set; }
@@ -139,26 +139,158 @@ namespace MineSweeperLogic
 
         public void DrawBoard()
         {
+            
+            
+            
+            
+            
+            
+           
+            for(int i=0; i < SizeY; i++)
+            {
+            
+                _bus.WriteLine();
+                for(int b=0; b < SizeX; b++)
+                {
+
+                    if(_grid[i, b].IsOpen==true)
+                    {
+                     switch(_grid[i, b].NrOfNeighbours)
+                        {
+                        case 1:
+                        _bus.Write("1 ");
+
+                        break;
+
+                            case 2:
+                        _bus.Write("2 ");
+
+                        break;
+
+                            case 3:
+                        _bus.Write("3 ");
+                        break;
+
+                            case 4:
+                        _bus.Write("4 ");
+                        break;
+
+                            case 5:
+                       _bus.Write("5 ");
+                       break ;
+
+                            case 6:
+                      _bus.Write("6 ");
+                      break;
+
+                            case 7:
+                        _bus.Write("7 ");
+                         break;
+
+                            case 8:
+                          _bus.Write("8 ");
+                          break;
+
+             
+
+
+                        }
+                    }
+                    else if(_grid[i, b].IsFlagged == true)
+                    {
+                        _bus.Write("! ");
+                    }
+                    else if (_grid[i, b].HasMine == true)
+                    {
+                        _bus.Write("X ");
+                    }
+                    else
+                    {
+                        _bus.Write("? ");
+                    }
+
+
+
+                }
+        }
+
         }
 
         #region MoveCursor Methods
 
         public void MoveCursorUp()
         {
+            
+
+            
+                if (PosY <= 0)
+                {
+
+                }
+                else
+                {
+                    PosY--;
+                }
+               
+            
+
+            
+
         }
 
         public void MoveCursorDown()
         {
-        }
+            
+
+            
+                if (PosY == SizeY-1)
+                {
+
+                }
+                else
+                {
+                    PosY++;
+                }
+             
+
+            
+            }
 
         public void MoveCursorLeft()
-        {
-        }
+            {
+                
+
+                
+                    if (PosX <= 0)
+                    {
+
+                    }  
+                    else
+                    {
+                        PosX--;
+                    }
+                    
+                }
+            
+
 
         public void MoveCursorRight()
         {
-        }
+           
 
+      
+                
+                 if (PosX == SizeX-1)
+                {
+
+                }
+                else
+                {
+                    PosX++;
+                }
+                
+            
+        }
         #endregion
 
     }
