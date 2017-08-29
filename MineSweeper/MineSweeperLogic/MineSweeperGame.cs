@@ -45,8 +45,29 @@ namespace MineSweeperLogic
         public void ClickCoordinate()
         {
             var clickedPoint = _grid[PosX, PosY];
-            clickedPoint.IsOpen = true;
+            clickedPoint.IsOpen = true; 
+            
+            if (clickedPoint.HasMine)
+            {
+                foreach (var cell in _grid)
+                {
+                    if (cell.HasMine)
+                    {
+                        cell.IsOpen = true;
+                        
+                    }
+                }
 
+                State = GameState.Lost;
+            }
+            
+
+
+            if (clickedPoint.IsFlagged)
+            {
+                
+
+            }
 
             /* void FloodFill (int x, int y, int fill, int old)
             {
