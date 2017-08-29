@@ -14,42 +14,41 @@ namespace MineSweeper
         
         static void Main(string[] args)
         {
-            //while (true)
-            //{
-            //    Console.Clear();
-            //    game.DrawBoard();
+            while (true)
+            {
+                Console.Clear();
+                game.DrawBoard();
 
-            //    if (game.State == GameState.Won)
-            //    {
-            //        Console.WriteLine("You won!");
-            //        Console.ReadLine();
-            //        game.ResetBoard();
-            //        continue;
-            //    }
-            //    else if (game.State == GameState.Lost)
-            //    {
-            //        Console.WriteLine("You lost!");
-            //        Console.ReadLine();
-            //        game.ResetBoard();
-            //        continue;
-            //    }
+                if (game.State == GameState.Won)
+                {
+                    Console.WriteLine("You won!");
+                    Console.ReadLine();
+                    game.ResetBoard();
+                    continue;
+                }
+                else if (game.State == GameState.Lost)
+                {
+                    Console.WriteLine("You lost!");
+                    Console.ReadLine();
+                    game.ResetBoard();
+                    continue;
+                }
 
-            //    var key = Console.ReadKey();
+                var key = Console.ReadKey();
 
-            //    if (key.Key == ConsoleKey.LeftArrow)
-            //        game.MoveCursorLeft();
-            //    if (key.Key == ConsoleKey.RightArrow)
-            //        game.MoveCursorRight();
-            //    if (key.Key == ConsoleKey.UpArrow)
-            //        game.MoveCursorUp();
-            //    if (key.Key == ConsoleKey.DownArrow)
-            //        game.MoveCursorDown();
-            //    if (key.Key == ConsoleKey.Spacebar)
-            //        game.ClickCoordinate();
-            //    if (key.Key == ConsoleKey.Enter)
-            //        game.FlagCoordinate();
-            //}
-            Console.WriteLine(game.GetAdjacentCells(1, 1).Length);
+                if (key.Key == ConsoleKey.LeftArrow)
+                    game.MoveCursorLeft();
+                if (key.Key == ConsoleKey.RightArrow)
+                    game.MoveCursorRight();
+                if (key.Key == ConsoleKey.UpArrow)
+                    game.MoveCursorUp();
+                if (key.Key == ConsoleKey.DownArrow)
+                    game.MoveCursorDown();
+                if (key.Key == ConsoleKey.Spacebar)
+                    game.ClickCoordinate();
+                if (key.Key == ConsoleKey.Enter)
+                    game.FlagCoordinate();
+            }
         }
     }
 }
