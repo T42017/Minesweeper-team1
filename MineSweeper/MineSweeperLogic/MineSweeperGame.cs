@@ -100,64 +100,82 @@ namespace MineSweeperLogic
 
         public void DrawBoard()
         {
-            int[,] data = new int[PosX, PosY];
             
-            PosX = 2;
-            PosY = 2;
+            
+            
             String text;
             text = "";
             
-            for(int i=0; i < PosY; i++)
+            
+           
+            for(int i=0; i < SizeY; i++)
             {
             
                 _bus.WriteLine();
-                for(int b=0; b < PosX; b++)
+                for(int b=0; b < SizeX; b++)
                 {
-                    
-                    switch ("?")
+
+                    if(_grid[i, b].IsOpen==true)
                     {
-                        case ".":
-                            text = ".";
-                            break;
-                        case "!":
-                            text = "!";
-                            break;
-                        case "X":
-                            text = "X";
-                            break;
-                        case "?":
-                            text = "?";
-                            break;
-                        case "1":
-                            text = "1";
-                            break;
-                        case "2":
-                            text = "2";
-                            break;
-                        case "3":
-                            text = "3";
-                            break;
-                        case "4":
-                            text = "4";
-                            break;
-                        case "5":
-                            text = "5";
-                            break;
-                        case "6":
-                            text = "6";
-                            break;
-                        case "7":
-                            text = "7";
-                            break;
-                        case "8":
-                            text = "8";
-                            break;
-                           
+                     switch(_grid[i, b].NrOfNeighbours)
+                        {
+                        case 1:
+                        _bus.Write("1 ");
+
+                        break;
+
+                            case 2:
+                        _bus.Write("2 ");
+
+                        break;
+
+                            case 3:
+                        _bus.Write("3 ");
+                        break;
+
+                            case 4:
+                        _bus.Write("4 ");
+                        break;
+
+                            case 5:
+                       _bus.Write("5 ");
+                       break ;
+
+                            case 6:
+                      _bus.Write("6 ");
+                      break;
+
+                            case 7:
+                        _bus.Write("7 ");
+                         break;
+
+                            case 8:
+                          _bus.Write("8 ");
+                          break;
+
+             
+
+
+                        }
                     }
-                    _bus.Write(text);
+                    else if(_grid[i, b].IsFlagged == true)
+                    {
+                        _bus.Write("! ");
+                    }
+                    else if (_grid[i, b].HasMine == true)
+                    {
+                        _bus.Write("X ");
+                    }
+                    else
+                    {
+                        _bus.Write("? ");
+                    }
+
+
+
                 }
-            }
-            
+        }
+
         }
 
         #region MoveCursor Methods
