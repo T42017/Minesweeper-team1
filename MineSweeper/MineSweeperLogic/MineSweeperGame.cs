@@ -42,6 +42,10 @@ namespace MineSweeperLogic
 
         public void FlagCoordinate()
         {
+            var currentCoordinate = GetCoordinate(PosX, PosY);
+            
+            if (!currentCoordinate.IsOpen)
+                currentCoordinate.IsFlagged ^= true;
         }
 
         public void ClickCoordinate()
@@ -80,7 +84,6 @@ namespace MineSweeperLogic
                 return;
 
             int placedMines = 0;
-
             do
             {
                 int x = _bus.Next(SizeX);
