@@ -103,8 +103,7 @@ namespace MineSweeperLogic
             
             
             
-            String text;
-            text = "";
+            
             
             
            
@@ -182,20 +181,77 @@ namespace MineSweeperLogic
 
         public void MoveCursorUp()
         {
+            
+
+            
+                if (PosY <= 0)
+                {
+
+                }
+                else
+                {
+                    PosY--;
+                }
+               
+            
+
+            
+
         }
 
         public void MoveCursorDown()
         {
-        }
+            
+
+            
+                if (PosY == SizeY-1)
+                {
+
+                }
+                else
+                {
+                    PosY++;
+                }
+             
+
+            
+            }
 
         public void MoveCursorLeft()
-        {
-        }
+            {
+                
+
+                
+                    if (PosX <= 0)
+                    {
+
+                    }  
+                    else
+                    {
+                        PosX--;
+                    }
+                    
+                }
+            
+
 
         public void MoveCursorRight()
         {
-        }
+           
 
+      
+                
+                 if (PosX == SizeX-1)
+                {
+
+                }
+                else
+                {
+                    PosX++;
+                }
+                
+            
+        }
         #endregion
 
     }
