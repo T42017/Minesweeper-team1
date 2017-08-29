@@ -15,11 +15,9 @@ namespace MineSweeperLogic
 
         public MineSweeperGame(int sizeX, int sizeY, int nrOfMines, IServiceBus bus)
         {
-            SizeX = sizeX;
-            SizeY = sizeY;
+            _grid = new PositionInfo[sizeX, sizeY];
             NumberOfMines = nrOfMines;
             State = GameState.Playing;
-            _grid = new PositionInfo[SizeX, SizeY];
             _bus = bus;
             ResetBoard();
         }
@@ -28,8 +26,10 @@ namespace MineSweeperLogic
 
         public int PosX { get; private set; }
         public int PosY { get; private set; }
-        public int SizeX { get; }
-        public int SizeY { get; }
+
+        public int SizeX => _grid.GetLength(0);
+        public int SizeY => _grid.GetLength(1);
+
         public int NumberOfMines { get; }
         public GameState State { get; private set; }
 
@@ -85,6 +85,15 @@ namespace MineSweeperLogic
                 }
             }
             while (placedMines != nrOfMines);
+        }
+
+        private int GetNumberOfNeighbours(PositionInfo cell)
+        {
+            if (cell.X == 0 && cell.Y == 0)
+            {
+                
+            }
+            return 0;
         }
 
         #endregion
