@@ -51,8 +51,15 @@ namespace MineSweeperLogic
         public void ClickCoordinate()
         {
             var clickedPoint = _grid[PosX, PosY];
-            clickedPoint.IsOpen = true; 
-            
+            if (clickedPoint.IsFlagged)
+                return;
+            if (!clickedPoint.IsFlagged)
+            {
+                clickedPoint.IsOpen = true;
+                var escapeMap = new bool[SizeX, SizeY];
+                FloodFill(escapeMap, clickedPoint.X, clickedPoint.Y);
+            }
+
             if (clickedPoint.HasMine)
             {
                 foreach (var cell in _grid)
@@ -62,23 +69,28 @@ namespace MineSweeperLogic
                         cell.IsOpen = true;
                     }
                 }
-
+                if (clickedPoint.IsFlagged)
+                    clickedPoint.IsFlagged = false;
                 State = GameState.Lost;
             }
-            
 
-
-            if (clickedPoint.IsFlagged)
+            if (CheckIfAllSafePositionsAreOpen())
             {
-                
-
+                State = GameState.Won;
+                return;
             }
+        }
 
-            if (!clickedPoint.IsFlagged)
+        private bool CheckIfAllSafePositionsAreOpen()
+        {
+            foreach (var cell in _grid)
             {
-                var escapeMap = new bool[SizeX, SizeY];
-                FloodFill(escapeMap, clickedPoint.X, clickedPoint.Y);
+                if (!cell.IsOpen && cell.HasMine)
+                    continue;
+                if (!cell.IsOpen)
+                    return false;
             }
+            return true;
         }
 
         private void FloodFill(bool[,] escapeMap, int x, int y)
@@ -303,7 +315,7 @@ namespace MineSweeperLogic
 
                         }
                     }
-                    if(_grid[b, i].IsFlagged == true )
+                    if(_grid[b, i].IsFlagged == true && _grid[b, i].IsOpen == false)
                     {
                         if (PosX == b && PosY == i)
                         {
