@@ -195,10 +195,10 @@ namespace MineSweeperLogic
             {
             
                 _bus.WriteLine();
-                for(int b=0; b < SizeX; b++)
+                for (int b = 0; b < SizeX; b++)
                 {
 
-                    if(_grid[b, i].IsOpen==true)
+                    if (_grid[b, i].IsOpen == true && _grid[b, i].HasMine == false && _grid[b, i].IsFlagged==false)
                     {
                      switch(_grid[b, i].NrOfNeighbours)
                         {
@@ -303,7 +303,7 @@ namespace MineSweeperLogic
 
                         }
                     }
-                    if(_grid[b, i].IsFlagged == true)
+                    if(_grid[b, i].IsFlagged == true )
                     {
                         if (PosX == b && PosY == i)
                         {
@@ -314,7 +314,7 @@ namespace MineSweeperLogic
                             _bus.Write("! ");
                         }
                     }
-                    if (_grid[b, i].HasMine == true)
+                    if (_grid[b, i].HasMine && _grid[b, i].IsOpen )
                     {
                         if (PosX == b && PosY == i)
                         {
@@ -324,8 +324,13 @@ namespace MineSweeperLogic
                         {
                             _bus.Write("X ");
                         }
+
+
                     }
-                    if(_grid[b, i].HasMine== false && _grid[b, i].IsFlagged==false && _grid[b, i].IsOpen==false)
+                   
+
+
+                        if ( _grid[b, i].IsOpen==false && _grid[b, i].IsFlagged==false)
                     {
                         if (PosX == b && PosY == i)
                         {
