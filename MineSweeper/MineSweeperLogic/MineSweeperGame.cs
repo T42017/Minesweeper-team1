@@ -156,6 +156,14 @@ namespace MineSweeperLogic
                     {
                      switch(_grid[b, i].NrOfNeighbours)
                         {
+                            case 0:
+                                if (PosX == b && PosY == i)
+                                {
+                                    _bus.Write(". ", ConsoleColor.DarkCyan);
+                                }
+                                else { _bus.Write(". "); }
+
+                                break;
                         case 1:
                        if(PosX==b && PosY == i)
                                 {
