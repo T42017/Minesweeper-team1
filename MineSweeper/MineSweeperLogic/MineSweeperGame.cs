@@ -294,7 +294,7 @@ namespace MineSweeperLogic
 
                         }
                     }
-                    else if(_grid[b, i].IsFlagged == true)
+                    if(_grid[b, i].IsFlagged == true)
                     {
                         if (PosX == b && PosY == i)
                         {
@@ -305,7 +305,7 @@ namespace MineSweeperLogic
                             _bus.Write("! ");
                         }
                     }
-                    else if (_grid[b, i].HasMine == true)
+                    if (_grid[b, i].HasMine == true)
                     {
                         if (PosX == b && PosY == i)
                         {
@@ -316,7 +316,7 @@ namespace MineSweeperLogic
                             _bus.Write("X ");
                         }
                     }
-                    else
+                    if(_grid[b, i].HasMine== false && _grid[b, i].IsFlagged==false && _grid[b, i].IsOpen==false)
                     {
                         if (PosX == b && PosY == i)
                         {
