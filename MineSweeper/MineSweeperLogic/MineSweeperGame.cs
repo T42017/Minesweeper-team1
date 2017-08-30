@@ -60,7 +60,6 @@ namespace MineSweeperLogic
                     if (cell.HasMine)
                     {
                         cell.IsOpen = true;
-                        
                     }
                 }
 
@@ -75,18 +74,28 @@ namespace MineSweeperLogic
 
             }
 
-            /* void FloodFill (int x, int y, int fill, int old)
+            if (!clickedPoint.IsFlagged)
             {
-                if ((x < 0)) || (x >= width)) return;
-                if ((y < 0)) || (y >= height)) return;
-                if (getPixel(x, y)== old);
-                FloodFill (x+1, y, fill, old);
-                FloodFill (x, y+1, fill, old); 
-                FloodFill (x-1, y, fill, old); 
-                FloodFill (x, y-1, fill, old);
-            }*/
+                var escapeMap = new bool[SizeX, SizeY];
+                FloodFill(escapeMap, clickedPoint.X, clickedPoint.Y);
+            }
+        }
 
+        private void FloodFill(bool[,] escapeMap, int x, int y)
+        {
+            if ((x < 0) || (x >= SizeX)) return;
+            if ((y < 0) || (y >= SizeY)) return;
+            if (GetCoordinate(x, y).HasMine || escapeMap[x, y]) return;
 
+            escapeMap[x, y] = true;
+            GetCoordinate(x, y).IsOpen = true;
+            if (GetCoordinate(x, y).NrOfNeighbours == 0)
+            {
+                FloodFill(escapeMap, x + 1, y    );
+                FloodFill(escapeMap, x    , y + 1);
+                FloodFill(escapeMap, x - 1, y    );
+                FloodFill(escapeMap, x    , y - 1);
+            }
         }
 
         #region Reset board
