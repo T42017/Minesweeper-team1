@@ -50,6 +50,43 @@ namespace MineSweeperLogic
 
         public void ClickCoordinate()
         {
+            var clickedPoint = _grid[PosX, PosY];
+            clickedPoint.IsOpen = true; 
+            
+            if (clickedPoint.HasMine)
+            {
+                foreach (var cell in _grid)
+                {
+                    if (cell.HasMine)
+                    {
+                        cell.IsOpen = true;
+                        
+                    }
+                }
+
+                State = GameState.Lost;
+            }
+            
+
+
+            if (clickedPoint.IsFlagged)
+            {
+                
+
+            }
+
+            /* void FloodFill (int x, int y, int fill, int old)
+            {
+                if ((x < 0)) || (x >= width)) return;
+                if ((y < 0)) || (y >= height)) return;
+                if (getPixel(x, y)== old);
+                FloodFill (x+1, y, fill, old);
+                FloodFill (x, y+1, fill, old); 
+                FloodFill (x-1, y, fill, old); 
+                FloodFill (x, y-1, fill, old);
+            }*/
+
+
         }
 
         #region Reset board
